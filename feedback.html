@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback - Nexora AI</title>
+
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+
+            theme: {
+                extend: {
+
+                    colors: {
+                        "surface-container-high": "#2a2a2a",
+                        "outline": "#859399",
+                        "surface-dim": "#131313",
+                        "on-secondary-fixed": "#320046",
+                        "secondary-container": "#6e208c",
+                        "tertiary-fixed-dim": "#c6c4dc",
+                        "inverse-primary": "#00677f",
+                        "on-primary-container": "#00566a",
+                        "on-tertiary-fixed-variant": "#454559",
+                        "primary-container": "#00d2ff",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed": "#f9d8ff",
+                        "on-secondary-container": "#e498ff",
+                        "surface-container-highest": "#353534",
+                        "on-primary": "#003543",
+                        "tertiary-container": "#c1bfd7",
+                        "on-primary-fixed": "#001f28",
+                        "on-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "background": "#131313",
+                        "on-tertiary-container": "#4e4d61",
+                        "surface-container-low": "#1c1b1b",
+                        "on-background": "#e5e2e1",
+                        "secondary": "#edb1ff",
+                        "tertiary-fixed": "#e3e0f9",
+                        "surface-variant": "#353534",
+                        "on-primary-fixed-variant": "#004e60",
+                        "surface-bright": "#3a3939",
+                        "secondary-fixed-dim": "#edb1ff",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1a1a2b",
+                        "surface-tint": "#47d6ff",
+                        "on-secondary": "#520070",
+                        "on-secondary-fixed-variant": "#6e208c",
+                        "surface-container": "#201f1f",
+                        "on-surface-variant": "#bbc9cf",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#3c494e",
+                        "on-tertiary": "#2f2f41",
+                        "primary": "#a5e7ff",
+                        "tertiary": "#dddbf4",
+                        "on-error": "#690005",
+                        "surface-container-lowest": "#0e0e0e",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#47d6ff",
+                        "surface": "#131313",
+                        "primary-fixed": "#b6ebff"
+                    },
+
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+
+                    spacing: {
+                        "container-max": "1440px",
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+
+                    fontFamily: {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"]
+                    },
+
+                    fontSize: {
+                        "label-sm": [
+                            "12px",
+                            {
+                                lineHeight: "1",
+                                letterSpacing: "0.05em",
+                                fontWeight: "600"
+                            }
+                        ],
+
+                        "headline-md": [
+                            "24px",
+                            {
+                                lineHeight: "1.4",
+                                fontWeight: "600"
+                            }
+                        ],
+
+                        "headline-lg": [
+                            "32px",
+                            {
+                                lineHeight: "1.3",
+                                fontWeight: "600"
+                            }
+                        ],
+
+                        "body-lg": [
+                            "18px",
+                            {
+                                lineHeight: "1.6",
+                                fontWeight: "400"
+                            }
+                        ],
+
+                        "body-md": [
+                            "16px",
+                            {
+                                lineHeight: "1.5",
+                                fontWeight: "400"
+                            }
+                        ],
+
+                        "display-lg-mobile": [
+                            "40px",
+                            {
+                                lineHeight: "1.2",
+                                fontWeight: "700"
+                            }
+                        ],
+
+                        "display-lg": [
+                            "64px",
+                            {
+                                lineHeight: "1.1",
+                                letterSpacing: "-0.02em",
+                                fontWeight: "700"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        /* ==============================
+           BODY
+        ============================== */
+
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+
+
+        /* ==============================
+           GLASS PANEL
+        ============================== */
+
+        .glass-panel {
+            background: rgba(10, 10, 27, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(165, 231, 255, 0.25);
+        }
+
+
+        /* ==============================
+           PRIMARY BUTTON
+        ============================== */
+
+        .btn-primary {
+            background: linear-gradient(
+                135deg,
+                #a5e7ff,
+                #edb1ff
+            );
+
+            color: #003543;
+
+            transition:
+                all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            box-shadow:
+                0 0 20px rgba(165, 231, 255, 0.45);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ==============================
+           INPUTS
+        ============================== */
+
+        .input-glass {
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(133, 147, 153, 0.35);
+            color: #e5e2e1;
+
+            transition:
+                all 0.3s ease;
+        }
+
+        .input-glass:focus {
+            outline: none;
+
+            border-color: #00d2ff;
+
+            box-shadow:
+                0 0 18px rgba(0, 210, 255, 0.18);
+
+            background: rgba(10, 10, 27, 0.85);
+        }
+
+        .input-glass::placeholder {
+            color: #859399;
+        }
+
+
+        /* ==============================
+           GRID BACKGROUND
+        ============================== */
+
+        .bg-grid-pattern {
+            background-image:
+                linear-gradient(
+                    to right,
+                    rgba(255,255,255,0.03) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba(255,255,255,0.03) 1px,
+                    transparent 1px
+                );
+
+            background-size: 40px 40px;
+        }
+
+
+        /* ==============================
+           GLOWING ORBS
+        ============================== */
+
+        .glow-orb {
+            position: absolute;
+
+            border-radius: 50%;
+
+            filter: blur(80px);
+
+            z-index: -1;
+
+            opacity: 0.4;
+
+            animation:
+                float 10s infinite ease-in-out alternate;
+        }
+
+        @keyframes float {
+
+            0% {
+                transform:
+                    translate(0, 0)
+                    scale(1);
+            }
+
+            100% {
+                transform:
+                    translate(30px, -50px)
+                    scale(1.1);
+            }
+
+        }
+
+
+        /* ==============================
+           PAGE ANIMATION
+        ============================== */
+
+        .page-content {
+            animation:
+                pageFade 0.7s ease;
+        }
+
+        @keyframes pageFade {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+
+        /* ==============================
+           STAR RATING
+        ============================== */
+
+        .star {
+            cursor: pointer;
+
+            color: #859399;
+
+            transition:
+                all 0.2s ease;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #edb1ff;
+
+            transform:
+                scale(1.15);
+        }
+
+
+        /* ==============================
+           SUCCESS MESSAGE
+        ============================== */
+
+        #successMessage {
+            display: none;
+
+            animation:
+                successFade 0.5s ease;
+        }
+
+        @keyframes successFade {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+
+        }
+
+
+        /* ==============================
+           MOBILE MENU
+        ============================== */
+
+        #mobileMenu {
+            transition:
+                all 0.3s ease;
+        }
+
+    </style>
+
+</head>
+
+
+<body
+    class="font-body-md text-body-md bg-background min-h-screen flex flex-col relative overflow-x-hidden">
+
+
+    <!-- ========================================================= -->
+    <!-- BACKGROUND -->
+    <!-- ========================================================= -->
+
+    <div
+        class="fixed inset-0 z-[-2] bg-grid-pattern">
+    </div>
+
+
+    <div
+        class="glow-orb bg-primary/20 w-[500px] h-[500px] top-[-100px] left-[-100px]">
+    </div>
+
+
+    <div
+        class="glow-orb bg-secondary/15 w-[600px] h-[600px] bottom-[-200px] right-[-100px]"
+        style="animation-delay:-5s;">
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- NAVIGATION BAR -->
+    <!-- ========================================================= -->
+
+    <header
+        class="bg-surface-dim/60 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-white/10 shadow-2xl">
+
+
+        <div
+            class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+
+
+            <!-- BRAND -->
+
+            <a
+                href="home.html"
+                class="font-headline-md text-headline-md font-bold text-primary tracking-tighter">
+
+                NEXORA AI
+
+            </a>
+
+
+            <!-- DESKTOP NAVIGATION -->
+
+            <nav
+                class="hidden md:flex items-center gap-8">
+
+
+                <a
+                    class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="home.html">
+
+                    Home
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="AI Tools.html">
+
+                    AI Tools
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="AI Chat.html">
+
+                    AI Chat
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="image.html">
+
+                    Image Studio
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="pricing.html">
+
+                    Pricing
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-body-md text-body-md"
+                    href="ABOUT.html">
+
+                    About
+
+                </a>
+
+
+                <!-- ACTIVE CONTACT -->
+
+                <a
+                    class="text-primary font-bold border-b-2 border-primary pb-1 transition-colors duration-300 font-body-md text-body-md"
+                    href="feedback.html">
+
+                    Feedback
+
+                </a>
+
+            </nav>
+
+
+            <!-- ACTIONS -->
+
+            <div
+                class="flex items-center gap-4">
+
+
+                <button
+                    class="text-primary hover:text-secondary transition-colors duration-300 font-body-md hidden lg:block">
+
+                    Sign In
+
+                </button>
+
+
+                <button
+                    class="btn-primary px-6 py-2 rounded-full font-label-sm text-label-sm font-semibold active:scale-95">
+
+                    Get Started
+
+                </button>
+
+
+                <!-- MOBILE BUTTON -->
+
+                <button
+                    id="mobileMenuBtn"
+                    class="md:hidden text-primary">
+
+                    <span
+                        class="material-symbols-outlined text-3xl">
+
+                        menu
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ===================================================== -->
+        <!-- MOBILE MENU -->
+        <!-- ===================================================== -->
+
+        <div
+            id="mobileMenu"
+            class="hidden md:hidden bg-[#101010]/95 backdrop-blur-xl border-t border-white/10 px-6 py-6">
+
+
+            <div
+                class="flex flex-col gap-5">
+
+
+                <a
+                    href="home.html"
+                    class="text-on-surface-variant hover:text-primary">
+
+                    Home
+
+                </a>
+
+
+                <a
+                    href="AI Tools.html"
+                    class="text-on-surface-variant hover:text-primary">
+
+                    AI Tools
+
+                </a>
+
+
+                <a
+                    href="AI Chat.html"
+                    class="text-on-surface-variant hover:text-primary">
+
+                    AI Chat
+
+                </a>
+
+
+                <a
+                    href="image.html"
+                    class="text-on-surface-variant hover:text-primary">
+
+                    Image Studio
+
+                </a>
+
+
+                <a
+                    href="pricing.html"
+                    class="text-on-surface-variant hover:text-primary">
+
+                    Pricing
+
+                </a>
+
+
+                <a
+                    href="ABOUT.html"
+                    class="text-on-surface-variant hover:text-primary">
+
+                    About
+
+                </a>
+
+
+                <a
+                    href="feedback.html"
+                    class="text-primary font-bold">
+
+                    Contact
+
+                </a>
+
+
+                <div
+                    class="border-t border-white/10 pt-5 flex items-center gap-5">
+
+
+                    <button
+                        class="text-primary">
+
+                        Sign In
+
+                    </button>
+
+
+                    <button
+                        class="btn-primary px-5 py-2 rounded-full font-semibold">
+
+                        Get Started
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ========================================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================================================= -->
+
+    <main
+        class="page-content flex-grow pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+
+
+        <!-- HEADER -->
+
+        <section
+            class="text-center max-w-3xl mx-auto mb-14">
+
+
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-6">
+
+
+                <span
+                    class="material-symbols-outlined text-primary text-sm">
+
+                    forum
+
+                </span>
+
+
+                <span
+                    class="font-label-sm text-label-sm text-primary uppercase tracking-widest">
+
+                    Your Voice Matters
+
+                </span>
+
+            </div>
+
+
+            <h1
+                class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">
+
+
+                Share Your
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+
+                    Feedback
+
+                </span>
+
+            </h1>
+
+
+            <p
+                class="font-body-lg text-body-lg text-on-surface-variant mt-6 max-w-2xl mx-auto">
+
+                We would love to hear what you think about Nexora AI.
+                Your feedback helps us improve our tools and create a better
+                experience for everyone.
+
+            </p>
+
+        </section>
+
+
+        <!-- ===================================================== -->
+        <!-- FEEDBACK AREA -->
+        <!-- ===================================================== -->
+
+        <section
+            class="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+
+
+            <!-- LEFT INFORMATION -->
+
+            <div
+                class="lg:col-span-2 glass-panel rounded-xl p-8 flex flex-col justify-between">
+
+
+                <div>
+
+
+                    <span
+                        class="material-symbols-outlined text-primary text-5xl mb-6">
+
+                        rate_review
+
+                    </span>
+
+
+                    <h2
+                        class="font-headline-lg text-headline-lg text-on-surface mb-5">
+
+                        Tell us what's on your mind.
+
+                    </h2>
+
+
+                    <p
+                        class="font-body-md text-body-md text-on-surface-variant">
+
+                        Whether you have a suggestion, found a problem,
+                        or simply want to tell us what you like, we're listening.
+
+                    </p>
+
+
+                    <div
+                        class="mt-8 space-y-5">
+
+
+                        <div
+                            class="flex items-start gap-4">
+
+
+                            <span
+                                class="material-symbols-outlined text-primary">
+
+                                lightbulb
+
+                            </span>
+
+
+                            <div>
+
+                                <h3
+                                    class="font-semibold text-on-surface">
+
+                                    Suggestions
+
+                                </h3>
+
+                                <p
+                                    class="text-sm text-on-surface-variant mt-1">
+
+                                    Share ideas for new features or improvements.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="flex items-start gap-4">
+
+
+                            <span
+                                class="material-symbols-outlined text-secondary">
+
+                                bug_report
+
+                            </span>
+
+
+                            <div>
+
+                                <h3
+                                    class="font-semibold text-on-surface">
+
+                                    Report a Problem
+
+                                </h3>
+
+                                <p
+                                    class="text-sm text-on-surface-variant mt-1">
+
+                                    Tell us about anything that isn't working correctly.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="flex items-start gap-4">
+
+
+                            <span
+                                class="material-symbols-outlined text-primary">
+
+                                favorite
+
+                            </span>
+
+
+                            <div>
+
+                                <h3
+                                    class="font-semibold text-on-surface">
+
+                                    Share Your Experience
+
+                                </h3>
+
+                                <p
+                                    class="text-sm text-on-surface-variant mt-1">
+
+                                    Let us know what you enjoy about Nexora AI.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="mt-10 pt-6 border-t border-white/10">
+
+
+                    <p
+                        class="text-sm text-outline">
+
+                        We appreciate every piece of feedback.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- FEEDBACK FORM -->
+            <!-- ================================================= -->
+
+            <div
+                class="lg:col-span-3 glass-panel rounded-xl p-6 md:p-10">
+
+<form
+    action="https://formspree.io/f/xqpkezlk"
+    method="POST"
+    class="space-y-7"
+>
+>
+
+
+                    <!-- NAME + EMAIL -->
+
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+                        <div>
+
+                            <label
+                                for="name"
+                                class="block text-sm font-semibold text-on-surface mb-2">
+
+                                Your Name
+
+                            </label>
+
+
+                            <input
+                                id="name"
+                                name="name"
+                                type="text"
+                                required
+                                placeholder="Enter your name"
+                                class="input-glass w-full rounded-lg px-4 py-3">
+
+                        </div>
+
+
+                        <div>
+
+                            <label
+                                for="email"
+                                class="block text-sm font-semibold text-on-surface mb-2">
+
+                                Your Email
+
+                            </label>
+
+
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                required
+                                placeholder="you@example.com"
+                                class="input-glass w-full rounded-lg px-4 py-3">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FEEDBACK TYPE -->
+
+                    <div
+                        class="mt-6">
+
+
+                        <label
+                            for="feedbackType"
+                            class="block text-sm font-semibold text-on-surface mb-2">
+
+                            Feedback Type
+
+                        </label>
+
+
+                        <select
+                            id="feedbackType"
+                            name="feedbackType"
+                            class="input-glass w-full rounded-lg px-4 py-3">
+
+
+                            <option value="General Feedback">
+                                General Feedback
+                            </option>
+
+                            <option value="Suggestion">
+                                Suggestion
+                            </option>
+
+                            <option value="Bug Report">
+                                Bug Report
+                            </option>
+
+                            <option value="Feature Request">
+                                Feature Request
+                            </option>
+
+                            <option value="Compliment">
+                                Compliment
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- RATING -->
+
+                    <div
+                        class="mt-6">
+
+
+                        <label
+                            class="block text-sm font-semibold text-on-surface mb-3">
+
+                            How would you rate your experience?
+
+                        </label>
+
+
+                        <div
+                            id="rating"
+                            class="flex gap-2">
+
+
+                            <span
+                                class="material-symbols-outlined star text-3xl"
+                                data-rating="1">
+
+                                star
+
+                            </span>
+
+
+                            <span
+                                class="material-symbols-outlined star text-3xl"
+                                data-rating="2">
+
+                                star
+
+                            </span>
+
+
+                            <span
+                                class="material-symbols-outlined star text-3xl"
+                                data-rating="3">
+
+                                star
+
+                            </span>
+
+
+                            <span
+                                class="material-symbols-outlined star text-3xl"
+                                data-rating="4">
+
+                                star
+
+                            </span>
+
+
+                            <span
+                                class="material-symbols-outlined star text-3xl"
+                                data-rating="5">
+
+                                star
+
+                            </span>
+
+                        </div>
+
+
+                        <input
+                            type="hidden"
+                            id="ratingValue"
+                            name="rating"
+                            value="0">
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        class="mt-6">
+
+
+                        <label
+                            for="message"
+                            class="block text-sm font-semibold text-on-surface mb-2">
+
+                            What's in your mind?
+
+                        </label>
+
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            required
+                            placeholder="Write a short message about your experience, suggestion, or idea..."
+                            class="input-glass w-full rounded-lg px-4 py-3 resize-none"></textarea>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <div
+                        class="mt-8">
+
+
+                        <button
+                            type="submit"
+                            class="btn-primary w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2">
+
+
+                            <span
+                                class="material-symbols-outlined">
+
+                                send
+
+                            </span>
+
+
+                            Submit Feedback
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- SUCCESS MESSAGE -->
+
+                    <div
+                        id="successMessage"
+                        class="mt-6 p-4 rounded-lg border border-primary/30 bg-primary/10">
+
+
+                        <div
+                            class="flex items-center gap-3">
+
+
+                            <span
+                                class="material-symbols-outlined text-primary">
+
+                                check_circle
+
+                            </span>
+
+
+                            <div>
+
+                                <h3
+                                    class="font-semibold text-primary">
+
+                                    Thank you for your feedback!
+
+                                </h3>
+
+
+                                <p
+                                    class="text-sm text-on-surface-variant mt-1">
+
+                                    Your message has been received successfully.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================================= -->
+
+    <footer
+        class="bg-surface-container-lowest w-full border-t border-white/5 mt-auto">
+
+
+        <div
+            class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter px-margin-mobile md:px-margin-desktop py-16 max-w-container-max mx-auto">
+
+
+            <!-- BRAND -->
+
+            <div
+                class="col-span-2 lg:col-span-2 flex flex-col gap-4">
+
+
+                <div
+                    class="font-headline-md text-headline-md font-bold text-primary">
+
+                    NEXORA AI
+
+                </div>
+
+
+                <p
+                    class="font-body-md text-body-md text-on-surface-variant max-w-xs mt-4">
+
+                    © 2024 NEXORA AI.
+                    Empowering the future with intelligence.
+
+                </p>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+
+            <div
+                class="flex flex-col gap-3">
+
+
+                <h4
+                    class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">
+
+                    Quick Links
+
+                </h4>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-secondary transition-all"
+                    href="home.html">
+
+                    Home
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-secondary transition-all"
+                    href="ABOUT.html">
+
+                    About Us
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-secondary transition-all"
+                    href="pricing.html">
+
+                    Pricing
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-secondary transition-all"
+                    href="feedback.html">
+
+                    Contact
+
+                </a>
+
+            </div>
+
+
+            <!-- TOOL LINKS -->
+
+            <div
+                class="flex flex-col gap-3">
+
+
+                <h4
+                    class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">
+
+                    Tool Links
+
+                </h4>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-secondary transition-all"
+                    href="AI Tools.html">
+
+                    AI Tools
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-secondary transition-all"
+                    href="AI Chat.html">
+
+                    AI Chat
+
+                </a>
+
+
+                <a
+                    class="text-on-surface-variant hover:text-secondary transition-all"
+                    href="image.html">
+
+                    Image Studio
+
+                </a>
+
+            </div>
+
+
+            <!-- LEGAL & CONNECT -->
+
+            <div
+                class="col-span-2 flex flex-col gap-6">
+
+
+                <div
+                    class="flex flex-col gap-3">
+
+
+                    <h4
+                        class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">
+
+                        Legal
+
+                    </h4>
+
+
+                    <a
+                        class="text-on-surface-variant hover:text-secondary transition-all"
+                        href="#">
+
+                        Privacy Policy
+
+                    </a>
+
+
+                    <a
+                        class="text-on-surface-variant hover:text-secondary transition-all"
+                        href="#">
+
+                        Terms of Service
+
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="flex flex-col gap-3 mt-4">
+
+
+                    <h4
+                        class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">
+
+                        Connect
+
+                    </h4>
+
+
+                    <div
+                        class="flex gap-4">
+
+
+                        <a
+                            class="text-on-surface-variant hover:text-secondary transition-all"
+                            href="#">
+
+                            <span
+                                class="material-symbols-outlined text-2xl">
+
+                                share
+
+                            </span>
+
+                        </a>
+
+
+                        <a
+                            class="text-on-surface-variant hover:text-secondary transition-all"
+                            href="mailto:contact@nexoraai.com">
+
+                            <span
+                                class="material-symbols-outlined text-2xl">
+
+                                mail
+
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================================= -->
+
+    <script>
+
+        /* ==========================================
+           MOBILE MENU
+        ========================================== */
+
+        const mobileMenuBtn =
+            document.getElementById("mobileMenuBtn");
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+
+        mobileMenuBtn.addEventListener("click", function () {
+
+            mobileMenu.classList.toggle("hidden");
+
+        });
+
+
+        /* ==========================================
+           STAR RATING
+        ========================================== */
+
+        const stars =
+            document.querySelectorAll(".star");
+
+        const ratingValue =
+            document.getElementById("ratingValue");
+
+
+        stars.forEach(function (star) {
+
+            star.addEventListener("click", function () {
+
+                const selectedRating =
+                    Number(this.dataset.rating);
+
+
+                ratingValue.value =
+                    selectedRating;
+
+
+                stars.forEach(function (item) {
+
+                    const itemRating =
+                        Number(item.dataset.rating);
+
+
+                    if (itemRating <= selectedRating) {
+
+                        item.classList.add("active");
+
+                        item.style.fontVariationSettings =
+                            "'FILL' 1";
+
+                    } else {
+
+                        item.classList.remove("active");
+
+                        item.style.fontVariationSettings =
+                            "'FILL' 0";
+
+                    }
+
+                });
+
+            });
+
+        });
+
+
+        /* ==========================================
+           FEEDBACK FORM
+        ========================================== */
+
+        const feedbackForm =
+            document.getElementById("feedbackForm");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        feedbackForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById("name").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const message =
+                document.getElementById("message").value.trim();
+
+
+            if (
+                name === "" ||
+                email === "" ||
+                message === ""
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+                This is a front-end demonstration.
+
+                The form currently shows a success message.
+                To actually save/send feedback, connect this
+                form to your backend, database, Formspree,
+                Netlify Forms, or another form service.
+            */
+
+
+            successMessage.style.display =
+                "block";
+
+
+            feedbackForm.reset();
+
+
+            ratingValue.value =
+                "0";
+
+
+            stars.forEach(function (star) {
+
+                star.classList.remove("active");
+
+                star.style.fontVariationSettings =
+                    "'FILL' 0";
+
+            });
+
+
+            successMessage.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "center"
+
+            });
+
+
+        });
+
+    </script>
+
+</body>
+
+</html>
